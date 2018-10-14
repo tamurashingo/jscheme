@@ -140,7 +140,7 @@ public class ListUtil {
         }
         else {
             int num = 0;
-            for (; lst.isNil() != false; num = num + 1) {
+            for (; lst.isNil() == false; num = num + 1) {
                 lst = lst.cdr();
             }
             return num;

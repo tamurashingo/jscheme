@@ -222,7 +222,7 @@ public class ListUtilTest {
 
         assertThat(ListUtil.length(Atom.ofString(""))).isEqualTo(1);
 
-        assertThat(ListUtil.list(Atom.ofString(""), Atom.ofString(""), Atom.ofString(""))).isEqualTo(3);
+        assertThat(ListUtil.length(ListUtil.list(Atom.ofString(""), Atom.ofString(""), Atom.ofString("")))).isEqualTo(3);
 
     }
 
