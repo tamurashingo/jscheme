@@ -27,6 +27,7 @@ public class Environment {
     }
 
     public void setVariable(String symbol, LObj value) {
+        symbol = symbol.toUpperCase();
         Environment env = lookupEnvironment(symbol);
         if (env == null) {
             this.variables.put(symbol, value);
@@ -37,10 +38,11 @@ public class Environment {
     }
 
     public LObj getVariable(String symbol) {
-        return variables.get(symbol);
+        return variables.get(symbol.toUpperCase());
     }
 
     public LObj lookup(String symbol) throws JSchemeRuntimeException {
+        symbol = symbol.toUpperCase();
         if (variables.containsKey(symbol)) {
             return getVariable(symbol);
         }
