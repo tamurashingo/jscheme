@@ -226,4 +226,16 @@ public class ListUtilTest {
 
     }
 
+    @Test
+    public void testToArray() {
+        // null
+        assertThat(ListUtil.toArray(null)).isEqualTo(new LObj[]{});
+        // nil
+        assertThat(ListUtil.toArray(Atom.NIL())).isEqualTo(new LObj[]{});
+        // Atom
+        assertThat(ListUtil.toArray(Atom.ofString("a"))).isEqualTo(new LObj[]{Atom.ofString("a")});
+        // List
+        assertThat(ListUtil.toArray(ListUtil.list(Atom.ofString("a"), Atom.ofString("b"), Atom.ofString("c")))).isEqualTo(new LObj[]{ Atom.ofString("a"), Atom.ofString("b"), Atom.ofString("c")});
+    }
+
 }

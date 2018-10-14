@@ -20,7 +20,8 @@ public class Apply {
 
     public LObj apply(LObj procedure, LObj arguments) {
         if (primitiveProcedure(procedure)) {
-            return applyPrimitiveProcedure(((Atom)procedure.car()).get(), arguments);
+            Command cmd = ((Atom)(procedure.cdr().car())).get();
+            return applyPrimitiveProcedure(cmd, arguments);
         }
         return null;
     }
@@ -37,13 +38,14 @@ public class Apply {
      * @return
      */
     public LObj applyPrimitiveProcedure(Command command, LObj arguments) {
+        LObj[] args = ListUtil.toArray(arguments);
         try {
-            command.operate(arguments);
+            return command.operate(args);
         }
         catch (CommandException ex) {
             ex.printStackTrace();
+            return null;
         }
-        return null;
     }
 
 

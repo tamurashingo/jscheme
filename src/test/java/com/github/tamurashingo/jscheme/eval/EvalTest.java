@@ -238,7 +238,9 @@ public class EvalTest {
         Environment env = Initialize.initEnvironment();
 
         LObj result = eval.eval(exp, env);
-        System.out.println(result.toString());
+        assertThat(result.isAtom()).isTrue();
+        assertThat(result.type()).isEqualTo(LObj.TYPE.VALUE);
+        assertThat((Long)((Atom)result).get()).isEqualTo(3);
     }
 
 

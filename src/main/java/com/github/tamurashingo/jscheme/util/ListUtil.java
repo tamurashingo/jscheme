@@ -148,6 +148,24 @@ public class ListUtil {
 
     }
 
+    public static LObj[] toArray(LObj args) {
+        if (args == null || args.isNil()) {
+            return new LObj[]{};
+        }
+        else if (args.isAtom()) {
+            return new LObj[]{ args };
+        }
+        else {
+            int length = ListUtil.length(args);
+            LObj[] ret = new LObj[length];
+            for (int ix = 0; ix < length; ix++) {
+                ret[ix] = args.car();
+                args = args.cdr();
+            }
+            return ret;
+        }
+    }
+
 
     public static void expand(LObj exp) {
 
